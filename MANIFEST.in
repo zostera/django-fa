@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+include HISTORY.rst
+recursive-include fa/static *
+recursive-include fa/templates *
+recursive-include docs *
