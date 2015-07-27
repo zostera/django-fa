@@ -6,7 +6,7 @@ import sys
 
 import fa
 
-from setuptools import setup
+from setuptools import setup, setuptools
 
 # Allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
@@ -41,9 +41,7 @@ setup(
     author='Dylan Verheul',
     author_email='dylan@zostera.nl',
     url='https://github.com/zostera/django-charts',
-    packages=[
-        "fa",
-    ],
+    packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=[
         "Django > 1.4",
