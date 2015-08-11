@@ -8,7 +8,7 @@
 - 100% coverage in tests
 
 
-0.1.0 - 2015-07-26
+0.1.1 - 2015-07-26
 ==================
 
 - First publication on GitHub
