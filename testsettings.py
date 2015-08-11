@@ -25,3 +25,7 @@ SITE_ID = 1
 
 # Django >= 1.7 complains if this is not set
 MIDDLEWARE_CLASSES = DEFAULT_SETTINGS.MIDDLEWARE_CLASSES
+
+FONT_AWESOME = {
+    'tag': 'span',
+}

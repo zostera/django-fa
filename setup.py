@@ -30,7 +30,8 @@ if sys.argv[-1] == 'publish':
 
 if sys.argv[-1] == 'test':
     os.system('pip install -U -r requirements.txt')
-    os.system('python manage.py test')
+    os.system('pip install -U coverage')
+    os.system('coverage run ./manage.py test && coverage report --include=./*')
     sys.exit()
 
 setup(
