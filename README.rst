@@ -75,4 +75,4 @@ Original author & Development lead: `Dylan Verheul <https://github.com/dyve>`_.
 
 Thanks to everybody that has contributed pull requests, ideas, issues, comments and kind words.
 
-Please see `AUTHORS.rst <AUTHORS.rst>` for a list of contributors.
+Please see `AUTHORS.rst <AUTHORS.rst>`_ for a list of contributors.
