@@ -22,7 +22,7 @@ class SettingsTest(TestCase):
 
     def test_settings(self):
         # This has the default setting, also this means to change the URL you have to change this test
-        self.assertEqual(FONT_AWESOME['url'], '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+        self.assertEqual(FONT_AWESOME['url'], '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
         # This is a setting altered in testsettings.py -- the default value is `i`
         self.assertEqual(FONT_AWESOME['tag'], 'span')
 

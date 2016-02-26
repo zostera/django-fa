@@ -8,7 +8,7 @@ Font Awesome for Django.
 Installation
 ------------
 
-1. Install using pip (soon - use GitHub for now):
+1. Install using pip:
 
    ``pip install django-fa``
 
@@ -40,7 +40,7 @@ Example template
 Documentation
 -------------
 
-TODO
+This is pretty much what it does.
 
 
 Requirements
@@ -75,4 +75,4 @@ Original author & Development lead: `Dylan Verheul <https://github.com/dyve>`_.
 
 Thanks to everybody that has contributed pull requests, ideas, issues, comments and kind words.
 
-Please see AUTHORS.rst for a list of contributors.
+Please see `AUTHORS.rst <AUTHORS.rst>`_ for a list of contributors.
