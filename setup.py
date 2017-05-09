@@ -37,11 +37,11 @@ if sys.argv[-1] == 'test':
 setup(
     name='django-fa',
     version=version,
-    description="""Charts for Django made simple""",
+    description="""Font Awesome for Django""",
     long_description=readme + '\n\n' + history,
     author='Dylan Verheul',
     author_email='dylan@zostera.nl',
-    url='https://github.com/zostera/django-charts',
+    url='https://github.com/zostera/django-fa',
     packages=setuptools.find_packages(),
     include_package_data=True,
     install_requires=[
