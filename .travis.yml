@@ -1,0 +1,29 @@
+language: python
+
+install:
+  - pip install tox
+  #- pip install python-coveralls
+
+script:
+  - tox
+
+matrix:
+  include:
+    - { python: 2.7, env: TOXENV=py27-1.10 }
+    - { python: 2.7, env: TOXENV=py27-1.11 }
+    - { python: 3.4, env: TOXENV=py34-1.10 }
+    - { python: 3.4, env: TOXENV=py34-1.11 }
+    - { python: 3.4, env: TOXENV=py34-master }
+    - { python: 3.5, env: TOXENV=py35-1.10 }
+    - { python: 3.5, env: TOXENV=py35-1.11 }
+    - { python: 3.5, env: TOXENV=py35-master }
+    - { python: 3.6, env: TOXENV=py36-master }
+
+  # we allow failures for versions which are not yet released:
+  allow_failures:
+      - env: TOXENV=py34-master
+      - env: TOXENV=py35-master
+      - env: TOXENV=py36-master
+
+#after_success:
+#    coveralls
