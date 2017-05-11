@@ -19,9 +19,11 @@ INSTALLED_APPS = (
     'fa',
 )
 
-# Django < 1.6 complains if this is not set
-ROOT_URLCONF = 'fa.tests.urls'
-SITE_ID = 1
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    },
+]
 
 # Django >= 1.7 complains if this is not set
 MIDDLEWARE_CLASSES = DEFAULT_SETTINGS.MIDDLEWARE_CLASSES
