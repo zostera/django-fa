@@ -4,8 +4,11 @@ django-fa
 
 Font Awesome for Django.
 
-.. image:: https://coveralls.io/repos/github/zostera/django-fa/badge.svg?branch=develop
-:target: https://coveralls.io/github/zostera/django-fa?branch=develop
+.. image:: https://coveralls.io/repos/github/zostera/django-fa/badge.svg?branch=master
+:target: https://coveralls.io/github/zostera/django-fa?branch=master
+
+.. image:: https://travis-ci.org/zostera/django-fa.svg?branch=master
+    :target: https://travis-ci.org/zostera/django-fa
 
 
 Installation
