@@ -12,11 +12,18 @@ _FONT_AWESOME_DEFAULTS = {
 }
 
 
-# Settings dict
-FONT_AWESOME = {}
+def get_fa_setting(name, default=None):
+    """
+    Get a setting or a default
+    """
 
-# Start with defaults
-FONT_AWESOME.update(_FONT_AWESOME_DEFAULTS)
+    # Settings dict
+    FONT_AWESOME = {}
 
-# Apply user settings from conf.settings
-FONT_AWESOME.update(getattr(django_settings, 'FONT_AWESOME', {}))
+    # Start with defaults
+    FONT_AWESOME.update(_FONT_AWESOME_DEFAULTS)
+
+    # Apply user settings from conf.settings
+    FONT_AWESOME.update(getattr(django_settings, 'FONT_AWESOME', {}))
+
+    return FONT_AWESOME.get(name, default)

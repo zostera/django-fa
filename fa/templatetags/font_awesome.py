@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django import template
 from django.utils.html import format_html
 
-from ..conf import FONT_AWESOME
+from ..conf import get_fa_setting
 
 register = template.Library()
 
@@ -30,7 +30,7 @@ def fa_css_url():
 
         {% fa_css_url %}
     """
-    return FONT_AWESOME['url']
+    return get_fa_setting('url')
 
 
 @register.simple_tag
@@ -56,7 +56,7 @@ def fa_css():
     """
     return format_html(
         '<link rel="stylesheet" href="{url}">',
-        url=FONT_AWESOME['url'],
+        url=fa_css_url(),
     )
 
 
@@ -66,7 +66,7 @@ def fa(*args):
     Return a Font Awesome tag with all these arguments (fa- is automatically prepended)
     """
     # Get tag from settings
-    tag = FONT_AWESOME['tag']
+    tag = get_fa_setting('tag')
     # Prepare format string with proper placeholder for css_classes
     format_string = '<' + tag + ' class="{css_classes}"></' + tag + '>'
     # Prepend arguments with fa- if needed
