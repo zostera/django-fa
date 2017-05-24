@@ -53,7 +53,7 @@ Requirements
 ------------
 
 - Python 2.6, 2.7, 3.2 or 3.3
-- Django >= 1.4
+- Django >= 1.8 and a matching Python version
 
 Contributions and pull requests for other Django and Python versions are welcome.
 
