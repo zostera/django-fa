@@ -22,7 +22,3 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
     },
 ]
-
-FONT_AWESOME = {
-    'tag': 'span',
-}

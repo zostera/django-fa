@@ -4,7 +4,7 @@ from django.conf import settings as django_settings
 _FONT_AWESOME_DEFAULTS = {
 
     # The url to load Font Awesome CSS
-    'url': '//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',
+    'url': 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
 
     # The HTML tag to use
     'tag': 'i',
