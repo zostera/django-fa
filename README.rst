@@ -46,16 +46,13 @@ Example template
 Documentation
 -------------
 
-This is pretty much what it does.
+See https://django-fa.readthedocs.io for complete documentation.
 
 
 Requirements
 ------------
 
-- Python 2.6, 2.7, 3.2 or 3.3
-- Django >= 1.8 and a matching Python version
-
-Contributions and pull requests for other Django and Python versions are welcome.
+Django >= 1.8 and a matching Python version
 
 
 Bugs and requests

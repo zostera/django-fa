@@ -1,10 +1,17 @@
 .. :changelog:
 
 
+Development (in progress)
+=========================
+
+- Default to to Font Awesome 4.7.0
+- Fix Travis CI and unit tests
+- Fix ReadThe Docs Documentation
+
 0.3.0 - 2016-02-26
 ==================
 
-- Font Awesome 4.4.5
+- Default to Font Awesome 4.4.5
 - Removed warnings for Django 1.10
 
 
