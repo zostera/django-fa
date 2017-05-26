@@ -1,5 +1,3 @@
-# Created by .ignore support plugin (hsz.mobi)
-### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -26,16 +24,6 @@ var/
 .installed.cfg
 *.egg
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -46,18 +34,7 @@ nosetests.xml
 coverage.xml
 *,cover
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-
 # Sphinx documentation
 docs/_build/
-
-# PyBuilder
-target/
-
-# PyCharm
-.idea/*
+docs/_static/
+docs/_templates/
