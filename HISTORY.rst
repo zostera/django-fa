@@ -1,12 +1,13 @@
 .. :changelog:
 
 
-Development (in progress)
-=========================
+0.4.0 - 2017-05-26
+==================
 
 - Default to to Font Awesome 4.7.0
 - Fix Travis CI and unit tests
 - Fix ReadThe Docs Documentation
+
 
 0.3.0 - 2016-02-26
 ==================
