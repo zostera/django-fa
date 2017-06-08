@@ -1,6 +1,14 @@
 .. :changelog:
 
 
+1.0.0 - in development
+======================
+
+- Rename `fa` to `icon`
+- No longer automatically prepend `fa` to icon parameters
+- Drop support for Django 1.9
+
+
 0.4.0 - 2017-05-26
 ==================
 

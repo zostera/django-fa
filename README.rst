@@ -2,6 +2,7 @@
 django-fa
 =========
 
+
 Font Awesome for Django.
 
 .. image:: https://coveralls.io/repos/github/zostera/django-fa/badge.svg?branch=master
@@ -47,6 +48,16 @@ Documentation
 -------------
 
 See https://django-fa.readthedocs.io for complete documentation.
+
+
+Compatible Django and Python versions
+-------------------------------------
+
+Currently `django-fa` requires Django >= 1.8 and a matching Python version.
+
+Python and Django support will match the Django project. When a Django or Python versions is no longer
+supported by the Django Project, this package will also stop supporting those versions. You are strongly
+encouraged to upgrade to the newest (LTS) combination of Python/Django.
 
 
 Requirements
