@@ -120,7 +120,7 @@ def _yesno_icon(value, arg, force_none):
     """
     # Lazy trick to make sure we get at least 3 results
     args = '{},,'.format(arg if arg else '').split(',')
-    parts = map(unicode.strip, args)
+    parts = [x.strip() for x in args]
     yes = parts[0]
     no = parts[1]
     none = parts[2]
