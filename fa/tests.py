@@ -73,6 +73,29 @@ class TemplateTagsTest(TestCase):
                 '<span class="fa fa-foo"></span>',
             )
 
+    def test_fa_tag(self):
+        # Icon needs a name
+        with self.assertRaises(TypeError):
+            res = render_template('{% fa %}')
+        # Icon name gets `fa`a prepended if necessary
+        res = render_template('{% fa "foo" %}')
+        self.assertHTMLEqual(
+            res,
+            '<i class="fa fa-foo"></i>',
+        )
+        res = render_template('{% fa "fa-foo" %}')
+        self.assertHTMLEqual(
+            res,
+            '<i class="fa fa-foo"></i>',
+        )
+        # Icon tag is settable
+        with self.settings(FONT_AWESOME={'tag': 'span'}):
+            res = render_template('{% fa "fa-foo" %}')
+            self.assertHTMLEqual(
+                res,
+                '<span class="fa fa-foo"></span>',
+            )
+
     def test_yesno_filters(self):
         # Truthy values
         res = render_template('{{ "foo"|yesno_icon }}')
