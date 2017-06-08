@@ -1,10 +1,11 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from django.template import Template, Context
+from django.template import Template, Context, TemplateSyntaxError
 from django.test import TestCase
 
 from fa.conf import get_fa_setting
+from fa.templatetags.font_awesome import TRUE_ICON, FALSE_ICON, NONE_ICON
 
 
 def render_template(content, **context_args):
@@ -49,19 +50,59 @@ class TemplateTagsTest(TestCase):
             '<link rel="stylesheet" href="{url}">'.format(url=get_fa_setting('url')),
         )
 
-    def test_fa_tag(self):
-        res = render_template('{% fa %}')
+    def test_icon_tag(self):
+        # Icon needs a name
+        with self.assertRaises(TemplateSyntaxError):
+            res = render_template('{% icon %}')
+        # Icon name gets `fa`a prepended if necessary
+        res = render_template('{% icon "foo" %}')
         self.assertHTMLEqual(
             res,
-            '<i class="fa"></i>',
+            '<i class="fa fa-foo"></i>',
         )
-        res = render_template('{% fa "foo" %}')
+        res = render_template('{% icon "fa-foo" %}')
         self.assertHTMLEqual(
             res,
             '<i class="fa fa-foo"></i>',
         )
-        res = render_template('{% fa "fa-foo" %}')
+        # Icon tag is settable
+        with self.settings(FONT_AWESOME={'tag': 'span'}):
+            res = render_template('{% icon "fa-foo" %}')
+            self.assertHTMLEqual(
+                res,
+                '<span class="fa fa-foo"></span>',
+            )
+
+    def test_yesno_filters(self):
+        # Truthy values
+        res = render_template('{{ "foo"|yesno_icon }}')
         self.assertHTMLEqual(
             res,
-            '<i class="fa fa-foo"></i>',
+            '<i class="fa {icon}"></i>'.format(icon=TRUE_ICON),
+        )
+        res = render_template('{{ "0"|yesno_icon }}')
+        self.assertHTMLEqual(
+            res,
+            '<i class="fa {icon}"></i>'.format(icon=TRUE_ICON),
+        )
+
+        res = render_template('{{ 0|yesno_icon }}')
+        self.assertHTMLEqual(
+            res,
+            '<i class="fa {icon}"></i>'.format(icon=FALSE_ICON),
+        )
+        res = render_template('{{ None|yesno_icon }}')
+        self.assertHTMLEqual(
+            res,
+            '<i class="fa {icon}"></i>'.format(icon=FALSE_ICON),
+        )
+        res = render_template('{{ None|yesnonone_icon }}')
+        self.assertHTMLEqual(
+            res,
+            '<i class="fa {icon}"></i>'.format(icon=NONE_ICON),
+        )
+        res = render_template('{{ None|yesnonone_icon:"a,b,c" }}')
+        self.assertHTMLEqual(
+            res,
+            '<i class="fa {icon}"></i>'.format(icon='fa-c'),
         )

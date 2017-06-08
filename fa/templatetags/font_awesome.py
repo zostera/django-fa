@@ -6,7 +6,32 @@ from django.utils.html import format_html
 
 from ..conf import get_fa_setting
 
+TRUE_ICON = 'fa-check-circle-o'
+FALSE_ICON = 'fa-circle-o'
+NONE_ICON = 'fa-question-circle-o'
+UNKNOWN_ICON = 'fa-question-circle'
+
 register = template.Library()
+
+
+def _sanitize_icon_name(name, default=None):
+    """
+    Helper function to sanitize icon string
+    :param name: The name of the icon
+    :param default: A fallback if the name is invalid or empty
+    :return: Lowercase icon name that starts with `fa-`
+    """
+    if name:
+        name = '{}'.format(name).lower()
+        if name == 'default':
+            name = ''
+    else:
+        name = ''
+    if not name:
+        name = default if default else UNKNOWN_ICON
+    if not name.startswith('fa-'):
+        name = 'fa-{}'.format(name)
+    return name
 
 
 @register.simple_tag
@@ -36,7 +61,7 @@ def fa_css_url():
 @register.simple_tag
 def fa_css():
     """
-    Return the full url to the Font Awesome CSS library
+    Return the HTML to insert the Font Awesome CSS library
 
     Default value: ``None``
 
@@ -44,40 +69,79 @@ def fa_css():
 
     **Tag name**::
 
-        fa_css_url
+        fa_css
 
     **usage**::
 
-        {% fa_css_url %}
+        {% fa_css %}
 
     **example**::
 
-        {% fa_css_url %}
+        {% fa_css %}
     """
-    return format_html(
-        '<link rel="stylesheet" href="{url}">',
-        url=fa_css_url(),
-    )
+    return format_html('<link rel="stylesheet" href="{url}">', url=fa_css_url())
 
 
 @register.simple_tag
-def fa(*args):
+def icon(name, *args, **kwargs):
     """
-    Return a Font Awesome tag with all these arguments (fa- is automatically prepended)
+    Return a Font Awesome icon tag based on the arguments to this template tag
     """
     # Get tag from settings
     tag = get_fa_setting('tag')
     # Prepare format string with proper placeholder for css_classes
     format_string = '<' + tag + ' class="{css_classes}"></' + tag + '>'
-    # Prepend arguments with fa- if needed
-    fa_args = []
-    for arg in args:
-        if arg.startswith('fa-'):
-            fa_args.append(arg)
-        else:
-            fa_args.append('fa-{arg}'.format(arg=arg))
+    # Sanitize icon
+    name = _sanitize_icon_name(name, kwargs.get('default', None))
+    # Prepare HTML attributes
+    fa_args = ['fa', name] + ['{}'.format(a) for a in args]
     # Return safely formatted HTML
     return format_html(
         format_string,
-        css_classes=' '.join(['fa'] + fa_args),
+        css_classes=u' '.join(fa_args),
     )
+
+
+@register.simple_tag
+def fa(*args, **kwargs):
+    """
+    Backwards compatible alias
+    :param args:
+    :param kwargs:
+    :return:
+    """
+    # TODO: Warning for deprecation
+    return icon(*args, **kwargs)
+
+
+def _yesno_icon(value, arg, force_none):
+    """
+    Helper function for yesno filters
+    """
+    # Lazy trick to make sure we get at least 3 results
+    args = '{},,'.format(arg if arg else '').split(',')
+    parts = map(unicode.strip, args)
+    yes = parts[0]
+    no = parts[1]
+    none = parts[2]
+    if value:
+        return icon(yes, default=TRUE_ICON)
+    if (force_none or none) and value is None:
+        return icon(none, default=NONE_ICON)
+    return icon(no, default=FALSE_ICON)
+
+
+@register.filter()
+def yesno_icon(value, arg=''):
+    """
+    Like the yesno filter in Django, only resulting in an icon
+    """
+    return _yesno_icon(value, arg, force_none=False)
+
+
+@register.filter()
+def yesnonone_icon(value, arg=''):
+    """
+    Like the yesno filter in Django, only resulting in an icon, and always use an icon for None
+    """
+    return _yesno_icon(value, arg, force_none=True)
