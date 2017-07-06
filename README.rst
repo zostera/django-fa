@@ -2,6 +2,9 @@
 django-fa
 =========
 
+> **NOTICE**
+> This project has been superseded by a more generic Icons for Django approach. Please user https://github.com/zostera/django-icons instead.
+
 
 Font Awesome for Django.
 
