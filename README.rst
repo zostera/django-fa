@@ -2,10 +2,6 @@
 django-fa
 =========
 
-> **NOTICE**
-> This project has been superseded by a more generic Icons for Django approach. Please user https://github.com/zostera/django-icons instead.
-
-
 Font Awesome for Django.
 
 .. image:: https://coveralls.io/repos/github/zostera/django-fa/badge.svg?branch=master
@@ -13,6 +9,14 @@ Font Awesome for Django.
 
 .. image:: https://travis-ci.org/zostera/django-fa.svg?branch=master
     :target: https://travis-ci.org/zostera/django-fa
+
+
+NOTICE
+------
+
+This project has been superseded by a more generic Icons for Django approach.
+
+Please user https://github.com/zostera/django-icons instead.
 
 
 Installation
