@@ -11,12 +11,12 @@ Font Awesome for Django.
     :target: https://travis-ci.org/zostera/django-fa
 
 
-NOTICE
-------
+DEPRECATION NOTICE
+------------------
 
-This project has been superseded by a more generic Icons for Django approach.
+You should not use this project. It has been succeeded by a more generic Icons for Django approach.
 
-Please user https://github.com/zostera/django-icons instead.
+Please use https://github.com/zostera/django-icons instead.
 
 
 Installation
